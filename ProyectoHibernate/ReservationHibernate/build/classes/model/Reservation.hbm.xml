@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Reservation" table="reservation" >
+		<id 		name="id"					column="reservation_id"  
+					type="integer"				access="field"			/>
+		<property 	name="reservation_date" 							/>
+		<property 	name="comment" 										/>
+		<property 	name="timetable" 			column="timetable_id"	/>
+		<property 	name="classroom"			column="classroom_id"	/>
+		<!-- 
+		<one-to-one name="timetable_id"
+                    class="model.Timetable"
+                    property-ref="timetable_id" /> 
+        <many-to-one name="timetable"
+                     class="model.Timetable"	column="timetable_id"
+                     cascade="save-update" 		unique="true"  			/> -->
+		
+	</class>
+</hibernate-mapping>

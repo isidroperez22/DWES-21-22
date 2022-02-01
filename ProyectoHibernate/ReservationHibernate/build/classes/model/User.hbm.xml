@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.User" table="user" >
+		<id 		name="id"					column="user_id"  
+					type="integer"				access="field"			/>
+		<property 	name="username" 									/>
+		<property 	name="password" 									/>
+		<property 	name="fullname" 									/>
+		<property 	name="address" 										/>
+		<property 	name="email" 										/>
+		<property 	name="role" 										/>
+	</class>
+</hibernate-mapping>
