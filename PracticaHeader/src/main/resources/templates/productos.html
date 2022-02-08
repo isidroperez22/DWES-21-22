@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Productos')">
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="container mt-5">
+		<div class="row mt-5">
+			<header th:insert="fragments/headfoot::menu"></header>
+		</div>
+	</div>
+	<h1 th:text = "${contenido}"></h1>
+	<ul>
+		<li th:text = "${producto}"></li>
+		<li  th:text = "${brand}"></li>
+		<li  th:text = "${category}"></li>
+	</ul>
+	<div class="container mt-2">
+		<div class="row mt-2">
+			<footer th:insert="fragments/headfoot::footer"></footer>
+		</div>
+	</div>
+</body>
+</html>
