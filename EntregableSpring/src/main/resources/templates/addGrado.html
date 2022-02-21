@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Add Grado')"></head>
+<body>
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<div class="col-6">
+				<form th:action="@{/grado/addGrado}" method="post"	th:object="${gradodto}">
+					<label for="nombre" class="form-label mt-3">Nombre</label>
+					<input type="text" class="form-control" id="nombre" name="nombre"
+						th:field="*{nombre}" required>						
+					<h6 class="text-danger" th:if="${error!=null}" th:text="${'Grado existente'}"></h6>	
+					<input type="submit" class="btn btn-primary w-100 mt-3" value="AÑADIR" />	
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

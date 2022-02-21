@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Main')"></head>
+<body>
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<header th:insert="fragments/parts::menu"></header>
+			<div class="col-10 mt-5 mb-5">
+				<img sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin.jpg" class="img-fluid">
+				<img sec:authorize="hasRole('ROLE_USER')" src="/img/user.png" class="img-fluid">
+			</div>			
+		</div>
+	</div>
+</body>
+</html>
