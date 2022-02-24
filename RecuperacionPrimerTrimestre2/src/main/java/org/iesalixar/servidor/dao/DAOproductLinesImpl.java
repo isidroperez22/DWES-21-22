@@ -1,0 +1,99 @@
+package org.iesalixar.servidor.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.iesalixar.servidor.bd.PoolDB;
+import org.iesalixar.servidor.models.ProductLines;
+
+public class DAOproductLinesImpl implements DAOproductLines {
+
+	@Override
+	public List<ProductLines> getAllProductLine() {
+		
+		PoolDB pool = new PoolDB();
+		Connection conn = pool.getConnection();
+		ArrayList<ProductLines> ProductLineList = new ArrayList<>();
+
+		try {
+
+			String sql = "select * from productlines";
+			PreparedStatement statement = conn.prepareStatement(sql);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+
+				ProductLines productLine = new ProductLines();
+
+				productLine.setProductLine(rs.getString("productLine"));
+				productLine.setTextDescription(rs.getString("textDescription"));
+				productLine.setHtmlDescription(rs.getString("htmlDescription"));
+
+
+				ProductLineList.add(productLine);
+
+			}
+			
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+		return ProductLineList;
+	}
+	
+	@Override
+	public ProductLines getProductLines(String productLine) {
+		
+		PoolDB pool = new PoolDB();
+		Connection conn = pool.getConnection();
+		
+		ProductLines productLines = null;
+		
+		try {
+			
+			String sql = "select * from productlines where productLine = ?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, productLine);
+			
+			ResultSet rs = statement.executeQuery();
+			
+			while(rs.next()) {
+				
+				productLines = new ProductLines();
+				
+				productLines.setProductLine(rs.getString("productLine"));
+				productLines.setTextDescription(rs.getString("textDescription"));
+				productLines.setHtmlDescription(rs.getNString("htmlDescription"));
+			}
+			
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			}
+		
+		return productLines;
+	}
+
+	@Override
+	public boolean removeProductLines(String productLine) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateProductLines(ProductLines productLines) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertProductLines(String prudctLine, String textDescription, String htmlDescription) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

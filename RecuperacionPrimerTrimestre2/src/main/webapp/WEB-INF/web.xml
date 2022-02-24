@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee ; http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+id="WebApp_ID" 
+version="4.0">
+  <display-name>RecuperacionPrimerTrimestre2</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+   <session-config> 
+      <session-timeout>5</session-timeout> 
+  	</session-config>
+  	
+  	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>org.iesalixar.servidor.controller.LoginServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LogOut</servlet-name>
+		<servlet-class>org.iesalixar.servidor.controller.LogOutServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Home</servlet-name>
+		<servlet-class>org.iesalixar.servidor.controller.HomeServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>AddProduct</servlet-name>
+		<servlet-class>org.iesalixar.servidor.controller.AddProductServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ChangeOrder</servlet-name>
+		<servlet-class>org.iesalixar.servidor.controller.ChangeOrderServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>OrderReport</servlet-name>
+		<servlet-class>org.iesalixar.servidor.controller.OrderReportServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LogOut</servlet-name>
+		<url-pattern>/LogOut</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Home</servlet-name>
+		<url-pattern>/Home</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>AddProduct</servlet-name>
+		<url-pattern>/Admin/AddProduct</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ChangeOrder</servlet-name>
+		<url-pattern>/Admin/ChangeOrderCustomer</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>OrderReport</servlet-name>
+		<url-pattern>/OrderReport</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+    	<servlet-name>default</servlet-name>
+    	<url-pattern>/img/*</url-pattern>
+    	<url-pattern>/css/*</url-pattern>
+    	<url-pattern>/js/*</url-pattern>
+  </servlet-mapping>
+  
+	<filter>
+		<filter-name>AdminFilter</filter-name>
+		<filter-class>org.iesalixar.servidor.filters.FiltroAdmin</filter-class>		
+	</filter>
+	
+	<filter>
+		<filter-name>UserFilter</filter-name>
+		<filter-class>org.iesalixar.servidor.filters.FiltroUsuario</filter-class>		
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>AdminFilter</filter-name>
+		<servlet-name>ChangeOrder</servlet-name>	
+		<servlet-name>AddProduct</servlet-name>	
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>UserFilter</filter-name>
+		<servlet-name>OrderReport</servlet-name>	
+	</filter-mapping>
+</web-app>
