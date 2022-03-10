@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head th:replace="fragments/bootstrap::head(title='Profesores')"></head>
+<body>
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<header th:insert="fragments/parts::menu"></header>
+			<div class="col-8">
+				<h1 class="text-center">Lista de profesores</h1>
+				<table class="table table-stripped table-hover">
+					<thead class="table-light">
+						<tr>
+							<th>ID</th>
+							<th>NIF</th>
+							<th>Nombre</th>
+							<th>Primer Apellido</th>
+							<th>Departamento</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="p : ${profesor}">
+							<td th:text="${p.getId()}"></td>
+							<td th:text="${p.getNif()}"></td>
+							<td th:text="${p.getNombre()}"></td>
+							<td th:text="${p.getApellido1()}"></td>
+							<td th:text="${p.departamento.nombre}"></td>
+							<td><a th:href="@{'/profesores/asignaturas?codigo='+${p.getId()}}"><i class="bi bi-eye-fill"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
